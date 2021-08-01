@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link id="theme" rel="stylesheet" type="text/css" href="static/styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+        <!-- =====BOX ICONS===== -->
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+
+        <title>Zobalo - Turn Recycling into a reward</title>
+        <link rel="shortcut icon" href="" />
+    </head>
+
+    <body>
+        <!--===== HOME =====-->
+        <section class="bg-idle" id="home">
+            <div id="particles-js3">
+                <div class="home__data">
+                    <h1 class="home__title">Welcome to Zobalo<br>Place a<span class="home__title-color"> Bottle or Can</span><br> to get started!</h1>
+                </div>
+                <div class="home__img">    
+                    <img src="static/arrow.gif" alt="">
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-idle" id="idle">
+            <div id="particles-js">
+                <div class="home__data2">
+                    <div class="bg-idle__title2">
+                        <div id="text1">
+                            <center><h1 class="bg-idle__title2">Recycle your Bottles or Cans Here</h1></center>
+                        </div>
+                        <div id="text2" style="display: none;">
+                            <center><h2 class="bg-idle__title3">Little effects have<br><span class="home__title-color">BIG</span> impacts</h2></center>
+                        </div>
+                        <div id="text3" style="display: none;">
+                            <center><h1 class="bg-idle__title2">Think outside the trash<br>RECYCLE</h1></center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-idle" id="count">
+            <div id="particles-js2">
+                <div class="home__data2">
+                    <div class="bg-idle__title4">
+                        <center><h1 class="bg-idle__title4"><span class="bg-idle__title4-color">How many do you have?</span></h1></center>
+                    </div>
+                    <div class="entryText">
+                        <h1 class="bg-idle__title5"><span class="entryText">Plastic</span></h1>
+                    </div>
+
+                    <div class="entryText2">
+                        <h1 class="bg-idle__title6"><span class="entryText2">Cans</span></h1>
+                    </div>
+                </div>    
+                <div class="skill-set-boundary">
+                    <span class="borders top-border"></span>
+                    <span class="borders right-border"></span>
+                    <span class="borders2 bottom-border2"></span>
+                    <span class="borders2 left-border2"></span>
+                    <div class="entryL" id="Plastic">Plastic</div>
+                </div>
+                <div class="skill-set-boundary2">
+                    <span class="borders2 top-border2"></span>
+                    <span class="borders2 right-border2"></span>
+                    <span class="borders2 bottom-border2"></span>
+                    <span class="borders2 left-border2"></span>
+                    <div class="entryR" id="Can">Can</div>
+                </div>
+
+                <div class="home__data4">
+                    <center><button type="button" class="button" id="btn1" onclick="clicked()">Are you done?</button></center>
+                </div>
+            </div>       
+        </section>
+
+        <section class="bg-idle" id="reward">
+            <div id="particles-js4">
+                <div class="home__data2">
+                    <div class="bg-idle__title4">
+                        <center><h1 class="bg-idle__title7">Thank You for using Zobalo!<br><span class="bg-idle__title7-color">Have a great day!</span></h1></center>
+                    </div>
+                </div>
+            </div>
+        </section>
+          
+        <!--===== SCROLL REVEAL =====-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--===== MAIN JS =====-->
+        <script src="static/main.js"></script>
+
+        <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+
+        <script type="text/javascript" src="static/particles.js"></script>
+        <script type="text/javascript" src="static/app.js"></script>
+
+        <script>
+            $(function(){
+                setInterval(Toggler, 4000)
+            });
+
+            function Toggler() {
+                var $first;
+                var $second;
+
+                if($("#text1").is(":visible")){
+                    $first=$("#text1");
+                    $second=$("#text2");
+                }
+
+                else {
+                    $first=$("#text2");
+                    $second=$("#text1");
+                }
+
+                $first.fadeToggle("slow");
+                $second.fadeToggle("slow");
+            }
+        </script>
+
+        <script>
+            $(document).ready(function() {
+  
+                var $skillSet = [];
+                    var $skillColors = ['#e34c26', '#1b73ba','#4caf50', '#131b28', '#777bb3'];
+                var $skillEntry = $('.entryL');
+                var $canEntry = $('.entryR');
+                var $textCol = $('.entryText');
+                var $textCol2 =  $('.entryText2');
+                
+                // Functions START
+                var $counter = 0;
+                    function changeSkillSetColours() {
+                        $skillEntry.text($skillSet[$counter]).css('color', $skillColors[$counter]);
+                        var $colors = $skillColors[$counter];
+
+                        $('.borders').removeAttr('style');
+                        $('.borders').css('backgroundColor', $colors );
+                        $('.top-border').animate({
+                                'width': '100px'
+                        }, 500);
+
+                        $('.right-border').delay(450).animate({
+                                'height': '150px'
+                        },250);
+
+                        $('.bottom-border').delay(700).animate({
+                                'width': '100px'
+                        }, 500);
+
+                        $('.left-border').delay(1150).animate({
+                                'height': '150px'
+                        }, 250);
+
+                        $counter++;
+                        if($counter == 5) {
+
+                            $counter = 0;
+                        }
+                    }
+
+                    var $counter2 = 0;
+                    function changeCan() {
+                        $canEntry.text($skillSet[$counter2]).css('color', $skillColors[$counter2]);
+                        var $colors = $skillColors[$counter2];
+
+                        $('.borders2').removeAttr('style');
+                        $('.borders2').css('backgroundColor', $colors );
+                        $('.top-border2').animate({
+                                'width': '100px'
+                        }, 500);
+
+                        $('.right-border2').delay(450).animate({
+                                'height': '150px'
+                        },250);
+
+                        $('.bottom-border2').delay(700).animate({
+                                'width': '100px'
+                        }, 500);
+
+                        $('.left-border2').delay(1150).animate({
+                                'height': '150px'
+                        }, 250);
+
+                        $counter2++;
+                        if($counter2 == 5) {
+
+                            $counter2 = 0;
+                        }
+                    }
+
+                    var $counter3 = 0;
+                    function changeText() {
+                        $textCol.text($skillSet[$counter3]).css('color', $skillColors[$counter3]);
+                        var $colors = $skillColors[$counter3];
+
+                        $('.borders').removeAttr('style');
+                        $('.borders').css('backgroundColor', $colors );
+                        $('.top-border').animate({
+                                'width': '100px'
+                        }, 500);
+
+                        $('.right-border').delay(450).animate({
+                                'height': '150px'
+                        },250);
+
+                        $('.bottom-border').delay(700).animate({
+                                'width': '100px'
+                        }, 500);
+
+                        $('.left-border').delay(1150).animate({
+                                'height': '150px'
+                        }, 250);
+
+                        $counter3++;
+                        if($counter3 == 5) {
+
+                            $counter3 = 0;
+                        }
+                    }
+
+                    var $counter4 = 0;
+                    function changeText2() {
+                        $textCol2.text($skillSet[$counter4]).css('color', $skillColors[$counter4]);
+                        var $colors = $skillColors[$counter4];
+
+                        $('.borders').removeAttr('style');
+                        $('.borders').css('backgroundColor', $colors );
+                        $('.top-border').animate({
+                                'width': '100px'
+                        }, 500);
+
+                        $('.right-border').delay(450).animate({
+                                'height': '150px'
+                        },250);
+
+                        $('.bottom-border').delay(700).animate({
+                                'width': '100px'
+                        }, 500);
+
+                        $('.left-border').delay(1150).animate({
+                                'height': '150px'
+                        }, 250);
+
+                        $counter4++;
+                        if($counter4 == 5) {
+
+                            $counter4 = 0;
+                        }
+                    }
+                    // Function END
+
+                    //Here we are calling the function on the HTML skil
+                    changeSkillSetColours();
+                    changeCan();
+                    changeText();
+                    changeText2();
+                    //Set Interval to add a delay to each animation loop
+                    setInterval(function(){
+                            changeSkillSetColours();
+                    }, 3000);
+                    setInterval(function(){
+                            changeCan();
+                    }, 3000);
+                    setInterval(function(){
+                            changeText();
+                    }, 3000);
+                    setInterval(function(){
+                            changeText2();
+                    }, 3000);
+            });
+        </script>
+
+        <script>
+            window.screen.orientation.onchange = function() {
+                if (this.type.startsWith('landscape')) {
+                    document.querySelector('#container').webkitRequestFullscreen();
+                }
+                else {
+                    document.webkitExitFullscreen();
+                }
+            }
+        </script>
+    </body>
+</html>
