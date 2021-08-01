@@ -148,4 +148,4 @@ if __name__ == "__main__":
     t1 = Thread(target=mainFunc, args=())
     t1.daemon = True
     t1.start()
-    app.run(host = '192.168.10.16', port=5000, debug=False)
+    app.run(host = '0.0.0.0', debug=False)
